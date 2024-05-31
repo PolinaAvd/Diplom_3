@@ -1,0 +1,43 @@
+import data
+import allure
+from pages.base_page import BasePage
+from locators.LRP_locators_reset_pass import ResetPassLocators as LRP
+import api_urls
+
+
+class ResetPass(BasePage):
+
+
+    @allure.step('Открываем страницу авторизации'
+                 'Находим сслыку Восстановить пароль и кликаем по ней')
+    def open_reset_pass_page(self):
+        self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
+        self.go_to_element_and_click(LRP.LINK_VOSSTANANOVIT_PASS)
+        return self.driver
+
+
+    @allure.step('Переходим на страницу восстановления пароля'
+                 'На странице восстановления пароля вводим емейл'
+                 'Нажимаем восстановить пароль'
+                 'Ожидание загрузки страницы с текстом Введите код из письма')
+    def vosstanovit_pass_enter_email(self):
+        self.open_reset_pass_page()
+        self.driver.find_element(*LRP.EMAIL_FIELD).send_keys(data.email_random)
+        self.driver.find_element(*LRP.BUTTON_VOSSTANOVIT_PASS).click()
+        self.wait_element_get_visible(LRP.VVEDITE_KOD_IZ_PISMA)
+        return self.driver.current_url
+
+
+    @allure.step('Первые шаги из vosstanovit_pass_enter_email()'
+                 'Ввод рандомного пароля'
+                 'Нажатие на Глаз'
+                 'Получение кода страницы')
+    def check_pass_symbols_visible(self):
+        self.vosstanovit_pass_enter_email()
+        self.driver.find_element(*LRP.VVEDITE_NOVIJ_PASS).send_keys(data.password_random)
+        self.driver.find_element(*LRP.EYE_BUTTON).click()
+        element = self.driver.page_source
+        return element
+
+
+
