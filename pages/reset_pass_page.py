@@ -23,8 +23,8 @@ class ResetPass(BasePage):
                  'Ожидание загрузки страницы с текстом Введите код из письма')
     def vosstanovit_pass_enter_email(self):
         self.open_reset_pass_page()
-        self.driver.find_element(*BL.EMAIL_FIELD).send_keys(helper.email_random)
-        self.driver.find_element(*LRP.BUTTON_VOSSTANOVIT_PASS).click()
+        self.find_element(BL.EMAIL_FIELD).send_keys(helper.email_random)
+        self.find_element(LRP.BUTTON_VOSSTANOVIT_PASS).click()
         self.find_element(LRP.VVEDITE_KOD_IZ_PISMA)
         return self.driver.current_url
 
@@ -35,7 +35,7 @@ class ResetPass(BasePage):
                  'Получение кода страницы')
     def check_pass_symbols_visible(self):
         self.vosstanovit_pass_enter_email()
-        self.driver.find_element(*LRP.VVEDITE_NOVIJ_PASS).send_keys(helper.password_random)
+        self.find_element(LRP.VVEDITE_NOVIJ_PASS).send_keys(helper.password_random)
         self.go_to_element_and_click(LRP.EYE_BUTTON)
         element = self.driver.page_source
         return element
