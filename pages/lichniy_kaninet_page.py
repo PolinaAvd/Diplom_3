@@ -1,6 +1,5 @@
 import allure
 from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
-from locators.BL_locators_main_page import BasePageLocators as BL
 from pages.base_page import BasePage
 from pages.main_page import MainPage
 

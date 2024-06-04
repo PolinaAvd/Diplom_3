@@ -1,7 +1,5 @@
-import allure
 from locators.BL_locators_main_page import BasePageLocators as BL
 from pages.base_page import BasePage
-import api_urls
 from api import *
 
 

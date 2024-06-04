@@ -1,6 +1,5 @@
 import random
-import allure
-from api import *
+
 
 class UserFactory:
     @staticmethod

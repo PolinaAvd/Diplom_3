@@ -1,7 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
-from locators.BL_locators_main_page import BasePageLocators as BL
 from api import *
 
 
