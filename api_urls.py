@@ -1,17 +1,16 @@
+MAIN_API = 'https://stellarburgers.nomoreparties.site/api/'
+CREATE_USER_URL = MAIN_API+'auth/register'
+DELETE_USER_URL = MAIN_API+'auth/user'
+LOGIN_URL = MAIN_API+'auth/login'
+CHANGE_USER_INFO_URL = MAIN_API+'auth/user'
+CREATE_ORDER_URL = MAIN_API+'orders'
+GET_INGREDIENTS_URL = MAIN_API+'ingredients'
+GET_LIST_OF_ORDERS_URL = MAIN_API+'orders'
 
-CREATE_USER_URL = 'https://stellarburgers.nomoreparties.site/api/auth/register'
-DELETE_USER_URL = 'https://stellarburgers.nomoreparties.site/api/auth/user'
-LOGIN_URL = 'https://stellarburgers.nomoreparties.site/api/auth/login'
-CHANGE_USER_INFO_URL = 'https://stellarburgers.nomoreparties.site/api/auth/user'
-CREATE_ORDER_URL = 'https://stellarburgers.nomoreparties.site/api/orders'
-GET_INGREDIENTS_URL = 'https://stellarburgers.nomoreparties.site/api/ingredients'
-GET_LIST_OF_ORDERS_URL = 'https://stellarburgers.nomoreparties.site/api/orders'
-
-
-AUTHORIZATION_PAGE_URL = 'https://stellarburgers.nomoreparties.site/login'
-FORGOT_PASS_PAGE_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'
-RESET_PASS_PAGE_URL = 'https://stellarburgers.nomoreparties.site/reset-password'
-LICHNIY_KABINET_URL = "https://stellarburgers.nomoreparties.site/account/profile"
-MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site"
-ORDERS_HISTORY_URL = 'https://stellarburgers.nomoreparties.site/account/order-history'
-LENTA_ZAKAZOV_URL = 'https://stellarburgers.nomoreparties.site/feed'
+MAIN_PAGE_URL = 'https://stellarburgers.nomoreparties.site'
+AUTHORIZATION_PAGE_URL = MAIN_PAGE_URL+'/login'
+FORGOT_PASS_PAGE_URL = MAIN_PAGE_URL+'/forgot-password'
+RESET_PASS_PAGE_URL = MAIN_PAGE_URL+'/reset-password'
+LICHNIY_KABINET_URL = MAIN_PAGE_URL+'/account/profile'
+ORDERS_HISTORY_URL = MAIN_PAGE_URL+'/account/order-history'
+LENTA_ZAKAZOV_URL = MAIN_PAGE_URL+'/feed'
