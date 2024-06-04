@@ -12,7 +12,7 @@ class LichniyKabinet(BasePage):
     def open_lichniy_kabinet_page(self, default_user_create_user):
         self.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LLK.LICHN_KABINET)
-        self.wait_element_get_visible(LLK.SOHRANIT_V_LICHN_KAB)
+        self.find_element(LLK.SOHRANIT_V_LICHN_KAB)
         return self.driver
 
 
@@ -30,6 +30,6 @@ class LichniyKabinet(BasePage):
     def exit_lichniy_kabinet(self, default_user_create_user):
         self.open_lichniy_kabinet_page(default_user_create_user)
         self.go_to_element_and_click(LLK.KNOPKA_VIHOD)
-        self.wait_element_get_visible(LLK.ENTER_BUTTON)
+        self.find_element(LLK.ENTER_BUTTON)
         return self.driver
 

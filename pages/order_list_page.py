@@ -18,7 +18,7 @@ class OrderList(BasePage):
     def popup_by_click_on_order(self, default_user_create_user):
         self.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
-        self.wait_element_get_visible(LOL.ORDER)
+        self.find_element(LOL.ORDER)
         self.go_to_element_and_click(LOL.ORDER)
         return self.get_text(LOL.CONSIST_TEXT)
 
@@ -52,11 +52,11 @@ class OrderList(BasePage):
         self.driver.find_element(*BL.EMAIL_FIELD).send_keys(login_data['email'])
         self.driver.find_element(*BL.PASS_FIELD).send_keys(login_data['password'])
         self.go_to_element_and_click(BL.ENTER_BUTTON)
-        self.wait_element_get_visible(LOL.VISIBLE_COMPONENT_ON_MAIN)
+        self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
         self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
         self.search_element_by_order_number(order_id) # В search_element_by_order_number(order_id) проверяется, что заказ есть в Ленте заказов. Если заказа нет, то тест падает
         self.go_to_element_and_click(LLK.LICHN_KABINET)
-        self.wait_element_get_visible(LOL.ORDER_HISTORY_BUTTON)
+        self.find_element(LOL.ORDER_HISTORY_BUTTON)
         self.go_to_element_and_click(LOL.ORDER_HISTORY_BUTTON)
         order_id_2 = self.get_text(LOL.ORDER_NUMBER)
         return [order_id, order_id_2]

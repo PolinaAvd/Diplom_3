@@ -15,7 +15,7 @@ class MainMenuPage(BasePage):
     def go_to_konstruktor(self, default_user_create_user):
         self.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LLK.LICHN_KABINET)
-        self.wait_element_get_visible(LLK.SOHRANIT_V_LICHN_KAB)
+        self.find_element(LLK.SOHRANIT_V_LICHN_KAB)
         self.go_to_element_and_click(LMM.BUTTON_KONSTRUKTOR)
         return self.driver
 
@@ -66,7 +66,7 @@ class MainMenuPage(BasePage):
         self.open_main_menu_page(default_user_create_user)
         self.drag_and_drop(self.driver.find_element(*LMM.INGREDIENT), self.driver.find_element(*LMM.BURGER_CONSTRUCTOR))
         self.go_to_element_and_click(LMM.ORDER_BUTTON)
-        self.wait_element_get_visible(LMM.ORDER_TEXT)
+        self.find_element(LMM.ORDER_TEXT)
         return self.get_text(LMM.ORDER_TEXT)
 
 

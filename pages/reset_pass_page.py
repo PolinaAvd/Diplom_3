@@ -25,7 +25,7 @@ class ResetPass(BasePage):
         self.open_reset_pass_page()
         self.driver.find_element(*BL.EMAIL_FIELD).send_keys(helper.email_random)
         self.driver.find_element(*LRP.BUTTON_VOSSTANOVIT_PASS).click()
-        self.wait_element_get_visible(LRP.VVEDITE_KOD_IZ_PISMA)
+        self.find_element(LRP.VVEDITE_KOD_IZ_PISMA)
         return self.driver.current_url
 
 

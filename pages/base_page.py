@@ -16,11 +16,6 @@ class BasePage:
         return self.driver.get(url)
 
 
-    @allure.step('Дождаться видимости элемента')
-    def wait_element_get_visible(self, locator, time = 3):
-        return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator))
-
-
     @allure.step('Перемеcтиться до элемента и кликнуть')
     def go_to_element_and_click(self, locator):
         element = self.driver.find_element(*locator)
@@ -52,10 +47,10 @@ class BasePage:
     def open_main_menu_page(self, default_user_create_user):
         new_user_data = default_user_create_user[1]
         self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
-        self.driver.find_element(*BL.EMAIL_FIELD).send_keys(new_user_data['email'])
-        self.driver.find_element(*BL.PASS_FIELD).send_keys(new_user_data['password'])
+        self.find_element(BL.EMAIL_FIELD).send_keys(new_user_data['email'])
+        self.find_element(BL.PASS_FIELD).send_keys(new_user_data['password'])
         self.go_to_element_and_click(BL.ENTER_BUTTON)
-        start_page = self.wait_element_get_visible(BL.VISIBLE_COMPONENT_ON_MAIN)
+        start_page = self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
         return start_page
 
 
