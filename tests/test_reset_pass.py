@@ -9,7 +9,7 @@ class TestResetPass:
     @allure.description('Проверка текущего url открылась страница с Восстановлением пароля')
     def test_open_reset_pass_page_pass(self, driver):
         element = ResetPass(driver).open_reset_pass_page()
-        assert element.current_url == api_urls.FORGOT_PASS_PAGE_URL
+        assert element == api_urls.FORGOT_PASS_PAGE_URL
 
 
     @allure.title('Ввод почты и клик по кнопке «Восстановить»')

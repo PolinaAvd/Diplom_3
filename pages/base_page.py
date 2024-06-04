@@ -38,14 +38,6 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator))
 
 
-    @allure.step('С помощью фикстры default_user_create_user, get_ingredients создать пользователя и параметры ингредиентов'
-                 'Создать заказ'
-                 'Удалить пользователя')
-    def create_default_order_helper(self, default_user_create_user, get_ingredients):
-        save_token = default_user_create_user[0]
-        ingredients_data = get_ingredients
-        CreateOrder.create_order(ingredients_data, save_token)
-        DeleteNewUserApi.delete_user(save_token)
 
 
 

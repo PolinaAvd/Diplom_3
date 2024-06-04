@@ -14,7 +14,7 @@ class ResetPass(BasePage):
     def open_reset_pass_page(self):
         self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
         self.go_to_element_and_click(LRP.LINK_VOSSTANANOVIT_PASS)
-        return self.driver
+        return self.driver.current_url
 
 
     @allure.step('Переходим на страницу восстановления пароля'

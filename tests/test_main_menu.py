@@ -9,14 +9,14 @@ class TestMainMenu:
     @allure.description('Проверка текущего url - совпадает с url страницы Авторизации')
     def test_go_to_konstruktor_pass(self, driver, default_user_create_user):
         element = MainMenuPage(driver).go_to_konstruktor(driver, default_user_create_user)
-        assert element.current_url == api_urls.MAIN_PAGE_URL + '/'
+        assert element == api_urls.MAIN_PAGE_URL + '/'
 
 
     @allure.title('Переход в Ленту заказов')
     @allure.description('Проверка текущего url - совпадает с url страницы Лента заказов')
     def test_go_to_lenta_zakazov_pass(self, driver, default_user_create_user):
         element = MainMenuPage(driver).go_to_lenta_zakazov(driver, default_user_create_user)
-        assert element.current_url == api_urls.LENTA_ZAKAZOV_URL
+        assert element == api_urls.LENTA_ZAKAZOV_URL
 
 
     @allure.title('Клик по ингредиенту в Главном меню')

@@ -17,7 +17,7 @@ class LichniyKabinet(BasePage):
         main_page.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LLK.LICHN_KABINET)
         self.find_element(LLK.SOHRANIT_V_LICHN_KAB)
-        return self.driver
+        return self.driver.current_url
 
 
     @allure.step('Перейти в ЛК методом open_lichniy_kabinet_page()'
@@ -25,7 +25,7 @@ class LichniyKabinet(BasePage):
     def go_to_history_of_orders(self, driver, default_user_create_user):
         self.open_lichniy_kabinet_page(driver, default_user_create_user)
         self.go_to_element_and_click(LLK.KNOPKA_ISTORIYA_ZAKAZOV)
-        return self.driver
+        return self.driver.current_url
 
 
     @allure.step('Перейти в ЛК методом open_lichniy_kabinet_page()'
@@ -35,5 +35,5 @@ class LichniyKabinet(BasePage):
         self.open_lichniy_kabinet_page(driver, default_user_create_user)
         self.go_to_element_and_click(LLK.KNOPKA_VIHOD)
         self.find_element(LLK.ENTER_BUTTON)
-        return self.driver
+        return self.driver.current_url
 

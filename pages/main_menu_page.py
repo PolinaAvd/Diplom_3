@@ -19,7 +19,7 @@ class MainMenuPage(BasePage):
         self.go_to_element_and_click(LLK.LICHN_KABINET)
         self.find_element(LLK.SOHRANIT_V_LICHN_KAB)
         self.go_to_element_and_click(LMM.BUTTON_KONSTRUKTOR)
-        return self.driver
+        return self.driver.current_url
 
 
     @allure.step('Создание и авторизация нового пользователя методом open_main_menu_page()'
@@ -28,7 +28,7 @@ class MainMenuPage(BasePage):
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
-        return self.driver
+        return self.driver.current_url
 
 
     @allure.step('Открыть главную страницу'
