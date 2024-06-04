@@ -7,7 +7,7 @@ class TestOrderList:
     @allure.title('Если кликнуть на заказ, откроется всплывающее окно с деталями')
     @allure.description('проверка, что текст заказа содержит Слово Состав')
     def test_popup_by_click_on_order_pass(self, driver, default_user_create_user):
-        element = OrderList(driver).popup_by_click_on_order(default_user_create_user)
+        element = OrderList(driver).popup_by_click_on_order(driver, default_user_create_user)
         assert element == 'Cостав'
 
 

@@ -5,9 +5,26 @@ from locators.LOL_locators_order_list import OrderListLocators as LOL
 from locators.LMM_locators_main_menu_page import MainMenuLocators as LMM
 from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
 from locators.BL_locators_main_page import BasePageLocators as BL
+from pages.main_page import MainPage
 
 
 class OrderList(BasePage):
+
+
+    @allure.step('Забрать регистрационные данные для нового пользователя'
+                 'Открыть страницу авторизации'
+                 'Ввести емейл'
+                 'Ввести пароль'
+                 'Нажать вход'
+                 'Дождаться загрузки главной страницы')
+    def open_main_menu_page(self, default_user_create_user):
+        new_user_data = default_user_create_user[1]
+        self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
+        self.find_element(BL.EMAIL_FIELD).send_keys(new_user_data['email'])
+        self.find_element(BL.PASS_FIELD).send_keys(new_user_data['password'])
+        self.go_to_element_and_click(BL.ENTER_BUTTON)
+        start_page = self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
+        return start_page
 
 
     @allure.step('Создание и авторизация нового пользователя методом open_main_menu_page()'
@@ -15,8 +32,9 @@ class OrderList(BasePage):
                  'Дождаться видимости элемента Заказ'
                  'Найти и перейти по Кнопке Заказ'
                  'Получить текст заказа')
-    def popup_by_click_on_order(self, default_user_create_user):
-        self.open_main_menu_page(default_user_create_user)
+    def popup_by_click_on_order(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
         self.find_element(LOL.ORDER)
         self.go_to_element_and_click(LOL.ORDER)

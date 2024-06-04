@@ -1,7 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
-from locators.BL_locators_main_page import BasePageLocators as BL
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
+from locators.BL_locators_main_page import BasePageLocators as BL
 from api import *
 
 
@@ -13,7 +13,7 @@ class BasePage:
 
     @allure.step('Открыть страницу')
     def open_page(self, url):
-        return self.driver.get(url)
+        self.driver.get(url)
 
 
     @allure.step('Перемеcтиться до элемента и кликнуть')
@@ -36,22 +36,6 @@ class BasePage:
     @allure.step('Проверяем видимость элемента')
     def find_element(self, locator, time=15):
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator))
-
-
-    @allure.step('Забрать регистрационные данные для нового пользователя'
-                 'Открыть страницу авторизации'
-                 'Ввести емейл'
-                 'Ввести пароль'
-                 'Нажать вход'
-                 'Дождаться загрузки главной страницы')
-    def open_main_menu_page(self, default_user_create_user):
-        new_user_data = default_user_create_user[1]
-        self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
-        self.find_element(BL.EMAIL_FIELD).send_keys(new_user_data['email'])
-        self.find_element(BL.PASS_FIELD).send_keys(new_user_data['password'])
-        self.go_to_element_and_click(BL.ENTER_BUTTON)
-        start_page = self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
-        return start_page
 
 
     @allure.step('С помощью фикстры default_user_create_user, get_ingredients создать пользователя и параметры ингредиентов'

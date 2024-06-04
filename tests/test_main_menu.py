@@ -8,14 +8,14 @@ class TestMainMenu:
     @allure.title('Переход по кнопке Конструктор')
     @allure.description('Проверка текущего url - совпадает с url страницы Авторизации')
     def test_go_to_konstruktor_pass(self, driver, default_user_create_user):
-        element = MainMenuPage(driver).go_to_konstruktor(default_user_create_user)
+        element = MainMenuPage(driver).go_to_konstruktor(driver, default_user_create_user)
         assert element.current_url == api_urls.MAIN_PAGE_URL + '/'
 
 
     @allure.title('Переход в Ленту заказов')
     @allure.description('Проверка текущего url - совпадает с url страницы Лента заказов')
     def test_go_to_lenta_zakazov_pass(self, driver, default_user_create_user):
-        element = MainMenuPage(driver).go_to_lenta_zakazov(default_user_create_user)
+        element = MainMenuPage(driver).go_to_lenta_zakazov(driver, default_user_create_user)
         assert element.current_url == api_urls.LENTA_ZAKAZOV_URL
 
 
@@ -43,5 +43,5 @@ class TestMainMenu:
     @allure.title('Офомить заказ для авторизованного пользователя')
     @allure.description('Проверка: Есть идентификатор заказа')
     def test_make_order_pass(self, driver, default_user_create_user):
-        element = MainMenuPage(driver).make_order(default_user_create_user)
+        element = MainMenuPage(driver).make_order(driver, default_user_create_user)
         assert element == 'идентификатор заказа'

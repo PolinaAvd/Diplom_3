@@ -2,7 +2,9 @@ import allure
 from pages.base_page import BasePage
 from locators.LMM_locators_main_menu_page import MainMenuLocators as LMM
 from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
+from locators.BL_locators_main_page import BasePageLocators as BL
 import api_urls
+from pages.main_page import MainPage
 
 
 class MainMenuPage(BasePage):
@@ -12,8 +14,9 @@ class MainMenuPage(BasePage):
                  'Поиск и клик по кнопке ЛК'
                  'Ожидание видимости элемента Сохранить в ЛК'
                  'Поиск и клик по кнопке Конструктор')
-    def go_to_konstruktor(self, default_user_create_user):
-        self.open_main_menu_page(default_user_create_user)
+    def go_to_konstruktor(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LLK.LICHN_KABINET)
         self.find_element(LLK.SOHRANIT_V_LICHN_KAB)
         self.go_to_element_and_click(LMM.BUTTON_KONSTRUKTOR)
@@ -22,8 +25,9 @@ class MainMenuPage(BasePage):
 
     @allure.step('Создание и авторизация нового пользователя методом open_main_menu_page()'
                  'Поиск кнопки Лента заказов и переход по ней')
-    def go_to_lenta_zakazov(self, default_user_create_user):
-        self.open_main_menu_page(default_user_create_user)
+    def go_to_lenta_zakazov(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
         return self.driver
 
@@ -62,8 +66,9 @@ class MainMenuPage(BasePage):
                  'Найти и перейти по кнопке Заказать'
                  'Дождаться видимости текста заказа'
                  'Получить текст Заказа')
-    def make_order(self, default_user_create_user):
-        self.open_main_menu_page(default_user_create_user)
+    def make_order(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         self.drag_and_drop(self.driver.find_element(*LMM.INGREDIENT), self.driver.find_element(*LMM.BURGER_CONSTRUCTOR))
         self.go_to_element_and_click(LMM.ORDER_BUTTON)
         self.find_element(LMM.ORDER_TEXT)
