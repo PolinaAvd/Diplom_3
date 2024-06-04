@@ -85,10 +85,11 @@ class OrderList(BasePage):
                  'Прогнать создание заказа create_default_order_helper()'
                  'Открыть Ленту заказов'
                  'Забрать новое количество заказов new_number')
-    def quantity_of_all_new_orders(self, default_user_create_user, get_ingredients):
+    def quantity_of_all_new_orders(self, driver, default_user_create_user, get_ingredients):
         self.open_page(api_urls.LENTA_ZAKAZOV_URL)
         old_number = self.get_text(LOL.ALL_TIME_ORDERS)
-        self.create_default_order_helper(default_user_create_user, get_ingredients)
+        main_page = MainPage(driver)
+        main_page.create_default_order_helper(default_user_create_user, get_ingredients)
         self.open_page(api_urls.LENTA_ZAKAZOV_URL)
         new_number = self.get_text(LOL.ALL_TIME_ORDERS)
         return [old_number, new_number]
@@ -99,10 +100,11 @@ class OrderList(BasePage):
                  'Прогнать создание заказа create_default_order_helper()'
                  'Открыть Ленту заказов'
                  'Забрать новое количество заказов new_number')
-    def quantity_of_today_new_orders(self, default_user_create_user, get_ingredients):
+    def quantity_of_today_new_orders(self, driver, default_user_create_user, get_ingredients):
         self.open_page(api_urls.LENTA_ZAKAZOV_URL)
         old_number = self.get_text(LOL.TODAY_ORDERS)
-        self.create_default_order_helper(default_user_create_user, get_ingredients)
+        main_page = MainPage(driver)
+        main_page.create_default_order_helper(default_user_create_user, get_ingredients)
         self.open_page(api_urls.LENTA_ZAKAZOV_URL)
         new_number = self.get_text(LOL.TODAY_ORDERS)
         return [old_number, new_number]

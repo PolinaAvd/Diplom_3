@@ -2,7 +2,6 @@ import allure
 from pages.base_page import BasePage
 from locators.LMM_locators_main_menu_page import MainMenuLocators as LMM
 from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
-from locators.BL_locators_main_page import BasePageLocators as BL
 import api_urls
 from pages.main_page import MainPage
 

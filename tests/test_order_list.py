@@ -21,14 +21,14 @@ class TestOrderList:
     @allure.title('При создании нового заказа счётчик Выполнено за всё время увеличивается')
     @allure.description('Проверка, что заказ созданный для пользоватея есть на странице Ленты заказов В работе')
     def test_quantity_of_all_new_orders_counter_raise(self, driver, default_user_create_user, get_ingredients):
-        element = OrderList(driver).quantity_of_all_new_orders(default_user_create_user, get_ingredients)
+        element = OrderList(driver).quantity_of_all_new_orders(driver, default_user_create_user, get_ingredients)
         assert int(element[1]) > int(element[0])
 
 
     @allure.title('При создании нового заказа счётчик Выполнено за сегодня увеличивается')
     @allure.description('Проверка, что значение счетчика СЕГОДНЯШНИХ заказов было меньше до создания нового заказа')
     def test_quantity_of_all_today_orders_counter_raise(self, driver, default_user_create_user, get_ingredients):
-        element = OrderList(driver).quantity_of_today_new_orders(default_user_create_user, get_ingredients)
+        element = OrderList(driver).quantity_of_today_new_orders(driver, default_user_create_user, get_ingredients)
         assert int(element[1]) > int(element[0])
 
 

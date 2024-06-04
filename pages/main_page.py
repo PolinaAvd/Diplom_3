@@ -2,6 +2,7 @@ import allure
 from locators.BL_locators_main_page import BasePageLocators as BL
 from pages.base_page import BasePage
 import api_urls
+from api import *
 
 
 class MainPage(BasePage):
@@ -20,3 +21,14 @@ class MainPage(BasePage):
         self.go_to_element_and_click(BL.ENTER_BUTTON)
         start_page = self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
         return start_page
+
+
+    @allure.step('С помощью фикстры default_user_create_user, get_ingredients создать пользователя и параметры ингредиентов'
+                 'Создать заказ'
+                 'Удалить пользователя')
+    def create_default_order_helper(self, default_user_create_user, get_ingredients):
+        save_token = default_user_create_user[0]
+        ingredients_data = get_ingredients
+        CreateOrder.create_order(ingredients_data, save_token)
+        DeleteNewUserApi.delete_user(save_token)
+
