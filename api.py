@@ -11,14 +11,6 @@ class CreateNewUserApi:
 
         return requests.post(api_urls.CREATE_USER_URL, json=body, headers=data.headers)
 
-class LoginApi:
-
-    @staticmethod
-    @allure.step("Авторизация пользователя")
-    def login_user(body, save_token):
-
-        return requests.post(api_urls.LOGIN_URL, json=body, headers={'Authorization': f'{save_token}'})
-
 
 class GetIngredients:
     @staticmethod

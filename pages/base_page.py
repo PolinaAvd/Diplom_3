@@ -30,7 +30,7 @@ class BasePage:
 
     @allure.step('Перенос элемента')
     def drag_and_drop(self, element, target):
-        return ActionChains(self.driver).drag_and_drop(element, target).perform()
+        return ActionChains(self.driver).drag_and_drop(element, target).pause(5).perform()
 
 
     @allure.step('Собрать текст с элемента')
