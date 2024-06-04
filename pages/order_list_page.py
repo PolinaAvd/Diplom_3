@@ -2,6 +2,9 @@ import allure
 from pages.base_page import BasePage
 import api_urls
 from locators.LOL_locators_order_list import OrderListLocators as LOL
+from locators.LMM_locators_main_menu_page import MainMenuLocators as LMM
+from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
+from locators.BL_locators_main_page import BasePageLocators as BL
 
 
 class OrderList(BasePage):
@@ -14,7 +17,7 @@ class OrderList(BasePage):
                  'Получить текст заказа')
     def popup_by_click_on_order(self, default_user_create_user):
         self.open_main_menu_page(default_user_create_user)
-        self.go_to_element_and_click(LOL.BUTTON_LENTA_ZAKAZOV)
+        self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
         self.wait_element_get_visible(LOL.ORDER)
         self.go_to_element_and_click(LOL.ORDER)
         return self.get_text(LOL.CONSIST_TEXT)
@@ -46,13 +49,13 @@ class OrderList(BasePage):
         order_id = order['order']['number']
         login_data = create_default_order[2]
         self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
-        self.driver.find_element(*LOL.EMAIL_FIELD).send_keys(login_data['email'])
-        self.driver.find_element(*LOL.PASS_FIELD).send_keys(login_data['password'])
-        self.go_to_element_and_click(LOL.ENTER_BUTTON)
+        self.driver.find_element(*BL.EMAIL_FIELD).send_keys(login_data['email'])
+        self.driver.find_element(*BL.PASS_FIELD).send_keys(login_data['password'])
+        self.go_to_element_and_click(BL.ENTER_BUTTON)
         self.wait_element_get_visible(LOL.VISIBLE_COMPONENT_ON_MAIN)
-        self.go_to_element_and_click(LOL.BUTTON_LENTA_ZAKAZOV)
+        self.go_to_element_and_click(LMM.BUTTON_LENTA_ZAKAZOV)
         self.search_element_by_order_number(order_id) # В search_element_by_order_number(order_id) проверяется, что заказ есть в Ленте заказов. Если заказа нет, то тест падает
-        self.go_to_element_and_click(LOL.LICHN_KABINET)
+        self.go_to_element_and_click(LLK.LICHN_KABINET)
         self.wait_element_get_visible(LOL.ORDER_HISTORY_BUTTON)
         self.go_to_element_and_click(LOL.ORDER_HISTORY_BUTTON)
         order_id_2 = self.get_text(LOL.ORDER_NUMBER)

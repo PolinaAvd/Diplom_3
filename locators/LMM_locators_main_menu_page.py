@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 class MainMenuLocators:
 
 
-    LICHN_KABINET = (By.XPATH, ".//a[@class='AppHeader_header__link__3D_hX']//p[text()='Личный Кабинет']") # Личный кабинет
-    SOHRANIT_V_LICHN_KAB = (By.XPATH, ".//div[@class='Profile_profile__3dzvr']//button[text()='Сохранить']")  # Компонент, ло которого ожидается загрузка ЛК, кнопка Сохранить
     BUTTON_KONSTRUKTOR = (By.XPATH, ".//p[text()='Конструктор']") # Кнопка Конструктор на Главной странице
     BUTTON_LENTA_ZAKAZOV = (By.XPATH, ".//p[contains(text(),'Лента Заказов')]") # Кнопка Лента Заказов на Главной странице
     INGREDIENT = (By.XPATH, './/*[@href="/ingredient/61c0c5a71d1f82001bdaaa6d"]')  # Локатор для ингредиента на странице меню

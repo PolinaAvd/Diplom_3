@@ -1,6 +1,7 @@
 import allure
 from pages.base_page import BasePage
 from locators.LMM_locators_main_menu_page import MainMenuLocators as LMM
+from locators.LLK_locators_lichniy_kabinet import LichniyKabinetLocators as LLK
 import api_urls
 
 
@@ -13,8 +14,8 @@ class MainMenuPage(BasePage):
                  'Поиск и клик по кнопке Конструктор')
     def go_to_konstruktor(self, default_user_create_user):
         self.open_main_menu_page(default_user_create_user)
-        self.go_to_element_and_click(LMM.LICHN_KABINET)
-        self.wait_element_get_visible(LMM.SOHRANIT_V_LICHN_KAB)
+        self.go_to_element_and_click(LLK.LICHN_KABINET)
+        self.wait_element_get_visible(LLK.SOHRANIT_V_LICHN_KAB)
         self.go_to_element_and_click(LMM.BUTTON_KONSTRUKTOR)
         return self.driver
 
