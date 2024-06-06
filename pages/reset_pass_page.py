@@ -2,7 +2,6 @@ import helper
 import allure
 from pages.base_page import BasePage
 from locators.LRP_locators_reset_pass import ResetPassLocators as LRP
-from locators.BL_locators_main_page import BasePageLocators as BL
 import api_urls
 
 
@@ -23,7 +22,7 @@ class ResetPass(BasePage):
                  'Ожидание загрузки страницы с текстом Введите код из письма')
     def vosstanovit_pass_enter_email(self):
         self.open_reset_pass_page()
-        self.find_element(BL.EMAIL_FIELD).send_keys(helper.email_random)
+        self.find_element(LRP.EMAIL_FIELD_ON_RESET_PASS_PAGE).send_keys(helper.email_random)
         self.find_element(LRP.BUTTON_VOSSTANOVIT_PASS).click()
         self.find_element(LRP.VVEDITE_KOD_IZ_PISMA)
         return self.driver.current_url

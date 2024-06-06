@@ -21,6 +21,27 @@ class MainPage(BasePage):
         return start_page
 
 
+    @allure.step('С помощью фикстры create_default_order создать пользователя и заказ'
+                 'Закбрать номер заказа пользователя order_id'
+                 'Забрать логин и пароль пользователя'
+                 'Открыть страницу автоизации'
+                 'Ввести емейл'
+                 'Ввести пароль'
+                 'Нажать Вход'
+                 'Дождться загрузки главной страницы'
+                 'Вернуть order_id')
+    def create_default_order_and_return_order_id(self, create_default_order):
+        order = create_default_order[1]
+        order_id = order['order']['number']
+        login_data = create_default_order[2]
+        self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
+        self.driver.find_element(*BL.EMAIL_FIELD).send_keys(login_data['email'])
+        self.driver.find_element(*BL.PASS_FIELD).send_keys(login_data['password'])
+        self.go_to_element_and_click(BL.ENTER_BUTTON)
+        self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
+        return order_id
+
+
     @allure.step('С помощью фикстры default_user_create_user, get_ingredients создать пользователя и параметры ингредиентов'
                  'Создать заказ'
                  'Удалить пользователя')
@@ -29,4 +50,6 @@ class MainPage(BasePage):
         ingredients_data = get_ingredients
         CreateOrder.create_order(ingredients_data, save_token)
         DeleteNewUserApi.delete_user(save_token)
+
+
 

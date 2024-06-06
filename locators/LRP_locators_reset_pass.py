@@ -8,4 +8,5 @@ class ResetPassLocators:
     VVEDITE_KOD_IZ_PISMA = (By.XPATH, ".//div[@class='input__container']//label[text()='Введите код из письма']")  # Кнопка Введите код из письма на странице /forgot-password
     VVEDITE_NOVIJ_PASS = (By.XPATH, ".//div[@class='input__container']//input[@name='Введите новый пароль']") # Кнопка Введите новый пароль на странице /reset-password
     EYE_BUTTON = (By.XPATH, "//div[@class='input__icon input__icon-action']") # Кнопка с глазом на странице /reset-password
+    EMAIL_FIELD_ON_RESET_PASS_PAGE = (By.XPATH, ".//div[@class='input__container']//input[@name='name']")  # Поле емэйл на странице /reset
 

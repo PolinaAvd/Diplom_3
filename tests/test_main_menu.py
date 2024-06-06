@@ -1,5 +1,7 @@
 import data
 from pages.main_menu_page import MainMenuPage
+from pages.main_page import MainPage
+from pages.lichniy_kaninet_page import LichniyKabinet
 import api_urls
 import allure
 
@@ -8,16 +10,22 @@ class TestMainMenu:
     @allure.title('Переход по кнопке Конструктор')
     @allure.description('Проверка текущего url - совпадает с url страницы Авторизации')
     def test_go_to_konstruktor_pass(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
+        lich_kab = LichniyKabinet(driver)
+        lich_kab.open_lichniy_kabinet_page(driver)
         element = MainMenuPage(driver)
-        result = element.go_to_konstruktor(driver, default_user_create_user)
+        result = element.click_on_konstruktor(driver)
         assert result == api_urls.MAIN_PAGE_URL + '/'
 
 
     @allure.title('Переход в Ленту заказов')
     @allure.description('Проверка текущего url - совпадает с url страницы Лента заказов')
     def test_go_to_lenta_zakazov_pass(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         element = MainMenuPage(driver)
-        result = element.go_to_lenta_zakazov(driver, default_user_create_user)
+        result = element.go_to_lenta_zakazov(driver)
         assert result == api_urls.LENTA_ZAKAZOV_URL
 
 
@@ -48,6 +56,8 @@ class TestMainMenu:
     @allure.title('Офомить заказ для авторизованного пользователя')
     @allure.description('Проверка: Есть идентификатор заказа')
     def test_make_order_pass(self, driver, default_user_create_user):
+        main_page = MainPage(driver)
+        main_page.open_main_menu_page(default_user_create_user)
         element = MainMenuPage(driver)
-        result = element.make_order(driver, default_user_create_user)
+        result = element.make_order(driver)
         assert result == 'идентификатор заказа'
