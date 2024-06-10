@@ -11,7 +11,7 @@ class OrderList(BasePage):
     @allure.step('Дождаться видимости элемента Заказ'
                  'Найти и перейти по Кнопке Заказ'
                  'Получить текст заказа')
-    def popup_by_click_on_order(self, driver):
+    def popup_by_click_on_order(self):
         self.find_element(LOL.ORDER)
         self.go_to_element_and_click(LOL.ORDER)
         return self.get_text(LOL.CONSIST_TEXT)

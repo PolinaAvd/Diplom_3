@@ -35,8 +35,8 @@ class MainPage(BasePage):
         order_id = order['order']['number']
         login_data = create_default_order[2]
         self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
-        self.driver.find_element(*BL.EMAIL_FIELD).send_keys(login_data['email'])
-        self.driver.find_element(*BL.PASS_FIELD).send_keys(login_data['password'])
+        self.find_element(BL.EMAIL_FIELD).send_keys(login_data['email'])
+        self.find_element(BL.PASS_FIELD).send_keys(login_data['password'])
         self.go_to_element_and_click(BL.ENTER_BUTTON)
         self.find_element(BL.VISIBLE_COMPONENT_ON_MAIN)
         return order_id

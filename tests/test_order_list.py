@@ -13,9 +13,9 @@ class TestOrderList:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         main_menu = MainMenuPage(driver)
-        main_menu.go_to_lenta_zakazov(driver)
+        main_menu.go_to_lenta_zakazov()
         element = OrderList(driver)
-        result = element.popup_by_click_on_order(driver)
+        result = element.popup_by_click_on_order()
         assert result == 'Cостав'
 
 
@@ -25,11 +25,11 @@ class TestOrderList:
         main_page = MainPage(driver)
         order_id = main_page.create_default_order_and_return_order_id(create_default_order)
         main_menu = MainMenuPage(driver)
-        main_menu.go_to_lenta_zakazov(driver)
+        main_menu.go_to_lenta_zakazov()
         order_list = OrderList(driver)
         order_list.search_element_by_order_number(order_id) # В search_element_by_order_number(order_id) проверяется, что заказ есть в Ленте заказов. Если заказа нет, то тест падает
         lihn_kab = LichniyKabinet(driver)
-        lihn_kab.open_lichniy_kabinet_page(driver)
+        lihn_kab.open_lichniy_kabinet_page()
         order_id_2 = order_list.new_orders_in_order_history()
         assert str(order_id) in order_id_2
 

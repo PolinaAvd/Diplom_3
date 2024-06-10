@@ -13,10 +13,10 @@ class TestMainMenu:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         lich_kab = LichniyKabinet(driver)
-        lich_kab.open_lichniy_kabinet_page(driver)
+        lich_kab.open_lichniy_kabinet_page()
         element = MainMenuPage(driver)
-        result = element.click_on_konstruktor(driver)
-        assert result == api_urls.MAIN_PAGE_URL + '/'
+        element.click_on_konstruktor()
+        assert element.get_current_url() == api_urls.MAIN_PAGE_URL + '/'
 
 
     @allure.title('Переход в Ленту заказов')
@@ -25,8 +25,8 @@ class TestMainMenu:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         element = MainMenuPage(driver)
-        result = element.go_to_lenta_zakazov(driver)
-        assert result == api_urls.LENTA_ZAKAZOV_URL
+        element.go_to_lenta_zakazov()
+        assert element.get_current_url() == api_urls.LENTA_ZAKAZOV_URL
 
 
     @allure.title('Клик по ингредиенту в Главном меню')
@@ -59,5 +59,5 @@ class TestMainMenu:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         element = MainMenuPage(driver)
-        result = element.make_order(driver)
+        result = element.make_order()
         assert result == 'идентификатор заказа'

@@ -11,8 +11,8 @@ class TestLichniyKabinet:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         element = LichniyKabinet(driver)
-        result = element.open_lichniy_kabinet_page(driver)
-        assert result == api_urls.LICHNIY_KABINET_URL
+        element.open_lichniy_kabinet_page()
+        assert element.get_current_url() == api_urls.LICHNIY_KABINET_URL
 
 
     @allure.title('Переход в раздел «История заказов»')
@@ -21,8 +21,8 @@ class TestLichniyKabinet:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         element = LichniyKabinet(driver)
-        result = element.go_to_history_of_orders(driver)
-        assert result == api_urls.ORDERS_HISTORY_URL
+        element.go_to_history_of_orders()
+        assert element.get_current_url() == api_urls.ORDERS_HISTORY_URL
 
 
     @allure.title('Выход из ЛК')
@@ -31,5 +31,5 @@ class TestLichniyKabinet:
         main_page = MainPage(driver)
         main_page.open_main_menu_page(default_user_create_user)
         element = LichniyKabinet(driver)
-        result = element.exit_lichniy_kabinet(driver)
-        assert result == api_urls.AUTHORIZATION_PAGE_URL
+        element.exit_lichniy_kabinet()
+        assert element.get_current_url() == api_urls.AUTHORIZATION_PAGE_URL

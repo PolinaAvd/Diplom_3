@@ -37,6 +37,16 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator))
 
 
+    @allure.step('Вернуть url')
+    def get_current_url(self):
+        return self.driver.current_url
+
+
+    @allure.step('Вернуть page_source')
+    def get_page_source(self):
+        return self.driver.page_source
+
+
 
 
 

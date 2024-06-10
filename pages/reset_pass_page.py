@@ -13,7 +13,6 @@ class ResetPass(BasePage):
     def open_reset_pass_page(self):
         self.open_page(api_urls.AUTHORIZATION_PAGE_URL)
         self.go_to_element_and_click(LRP.LINK_VOSSTANANOVIT_PASS)
-        return self.driver.current_url
 
 
     @allure.step('Переходим на страницу восстановления пароля'
@@ -25,7 +24,6 @@ class ResetPass(BasePage):
         self.find_element(LRP.EMAIL_FIELD_ON_RESET_PASS_PAGE).send_keys(helper.email_random)
         self.find_element(LRP.BUTTON_VOSSTANOVIT_PASS).click()
         self.find_element(LRP.VVEDITE_KOD_IZ_PISMA)
-        return self.driver.current_url
 
 
     @allure.step('Первые шаги из vosstanovit_pass_enter_email()'
@@ -36,8 +34,8 @@ class ResetPass(BasePage):
         self.vosstanovit_pass_enter_email()
         self.find_element(LRP.VVEDITE_NOVIJ_PASS).send_keys(helper.password_random)
         self.go_to_element_and_click(LRP.EYE_BUTTON)
-        element = self.driver.page_source
-        return element
+        return self.get_page_source()
+
 
 
 
